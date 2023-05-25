@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IconTypes } from './row-header/bordered-icon/icon-types';
+import { IconTypes, roundsConfig } from './services/round-types';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +11,5 @@ export class AppComponent {
   iconTypeWanted1 = IconTypes.CLOUD;
   iconTypeWanted2 = IconTypes.LEAF;
   iconTypeWanted3 = IconTypes.FLOWER;
+  roundsConfig = roundsConfig;
 }

@@ -1,5 +1,4 @@
 <div class="container">
-<!--  <div class="font-serif font-bold text-2xl">{{roundNumber}}.</div>-->
   <app-bordered-icon [iconType]="iconType"></app-bordered-icon>
-  <div class="text-xl multiplier">x {{multiplier}}</div>
+  <div class="text-xl multiplier" *ngIf="multiplier !== undefined">x {{multiplier}}</div>
 </div>

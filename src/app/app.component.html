@@ -5,7 +5,7 @@
 <table class="border-separate border border-slate-400">
   <thead>
   <tr>
-    <th>Rounds</th>
+    <th colspan="2">Rounds</th>
     <th>Player 1</th>
     <th>Player 2</th>
     <th>Player 3</th>
@@ -13,49 +13,23 @@
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>
-      <app-row-header [roundNumber]="1" [multiplier]="3" [iconType]="iconTypeWanted"></app-row-header>
-    </td>
-    <td class="border border-slate-300"></td>
-    <td class="border border-slate-300"></td>
-    <td class="border border-slate-300"></td>
-    <td class="border border-slate-300"></td>
-  </tr>
-  <tr>
-    <td>2. Blue x 3, Green x 4
-      <app-row-header [roundNumber]="2" [multiplier]="3" [iconType]="iconTypeWanted1"></app-row-header>
-    </td>
-    <td class="border border-slate-300"></td>
-    <td class="border border-slate-300"></td>
-    <td class="border border-slate-300"></td>
-    <td class="border border-slate-300"></td>
-  </tr>
-  <tr>
-    <td>3. Blue x 3, Green x 4, Gray x 7
-      <app-row-header [roundNumber]="3" [multiplier]="3" [iconType]="iconTypeWanted2"></app-row-header>
-    </td>
-    <td class="border border-slate-300"></td>
-    <td class="border border-slate-300"></td>
-    <td class="border border-slate-300"></td>
-    <td class="border border-slate-300"></td>
-  </tr>
-  <tr>
-    <td>End pink x ?
-      <app-row-header [roundNumber]="3" [multiplier]="3" [iconType]="iconTypeWanted3"></app-row-header>
-    </td>
-    <td class="border border-slate-300"></td>
-    <td class="border border-slate-300"></td>
-    <td class="border border-slate-300"></td>
-    <td class="border border-slate-300"></td>
-  </tr>
-  <tr>
-    <td>Total</td>
-    <td class="border border-slate-300"></td>
-    <td class="border border-slate-300"></td>
-    <td class="border border-slate-300"></td>
-    <td class="border border-slate-300"></td>
-  </tr>
+  <ng-container *ngFor="let dummy of ' '.repeat(3).split(''), let outer = index">
+    <ng-container *ngFor="let round of roundsConfig, let inner = index">
+      <tr *ngIf="round.usedInRounds.includes(outer)">
+        <td *ngIf="inner === 0" [attr.rowspan]="outer + 1" class="font-serif font-bold text-2xl">{{outer + 1}}.</td>
+        <td *ngIf="round.nonLinearMultiplier !== undefined" [attr.rowspan]="outer + 1" class="font-serif font-bold text-2xl"></td>
+        <td>
+          <app-row-header [roundNumber]="1"
+                          [multiplier]="round.linearMultiplier"
+                          [iconType]="round.iconType"></app-row-header>
+        </td>
+        <td class="border border-slate-300"></td>
+        <td class="border border-slate-300"></td>
+        <td class="border border-slate-300"></td>
+        <td class="border border-slate-300"></td>
+      </tr>
+    </ng-container>
+  </ng-container>
   </tbody>
 </table>
 

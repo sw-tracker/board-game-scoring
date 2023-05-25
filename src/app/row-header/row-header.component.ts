@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IconTypes } from './bordered-icon/icon-types';
+import { IconTypes } from '../services/round-types';
 
 @Component({
   selector: 'app-row-header',

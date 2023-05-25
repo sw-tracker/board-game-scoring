@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faDroplet, faCloud, faSeedling, faQuestion, faFan } from '@fortawesome/free-solid-svg-icons';
-import { IconTypes } from './icon-types';
+import { IconTypes } from 'src/app/services/round-types';
 
 @Component({
   selector: 'app-bordered-icon',
