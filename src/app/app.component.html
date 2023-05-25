@@ -3,15 +3,17 @@
 </h1>
 
 <div class="grid grid-cols-5 gap-1 p-1 pt-8">
-  <h5></h5>
-  <h5 class="text-center border border-slate-300">Player 1</h5>
-  <h5 class="text-center border border-slate-300">Player 2</h5>
-  <h5 class="text-center border border-slate-300">Player 3</h5>
-  <h5 class="text-center border border-slate-300">Player 4</h5>
+  <p></p>
+  <ng-container
+    *ngFor="let dummy of ' '.repeat(4).split(''), let i = index">
+    <app-player-name-input [playerIndex]="i"></app-player-name-input>
+  </ng-container>
+
   <ng-container
     *ngFor="let dummy of ' '.repeat(3).split(''), let outer = index">
     <hr class="col-span-5"/>
-    <h5 class="col-span-5 font-serif font-bold text-sm pr-2">{{outer + 1}} Round</h5>
+    <p class="col-span-5 font-serif font-bold text-sm pr-2">{{outer + 1}}
+      Round</p>
     <hr class="col-span-5"/>
     <ng-container *ngFor="let round of roundsConfig, let inner = index">
       <ng-container *ngIf="round.usedInRounds.includes(outer)">
@@ -20,12 +22,18 @@
                           [multiplier]="round.linearMultiplier"
                           [iconType]="round.iconType"></app-row-header>
         </div>
-        <h5 class="border border-slate-300"></h5>
-        <h5 class="border border-slate-300"></h5>
-        <h5 class="border border-slate-300"></h5>
-        <h5 class="border border-slate-300"></h5>
+        <app-score-input></app-score-input>
+        <app-score-input></app-score-input>
+        <app-score-input></app-score-input>
+        <app-score-input></app-score-input>
       </ng-container>
     </ng-container>
   </ng-container>
-</div>
 
+  <hr class="col-span-5"/>
+  <p class="font-serif font-bold text-2xl pr-2 text-right">&Sigma;</p>
+  <app-score-input [isReadonly]="true"></app-score-input>
+  <app-score-input [isReadonly]="true"></app-score-input>
+  <app-score-input [isReadonly]="true"></app-score-input>
+  <app-score-input [isReadonly]="true"></app-score-input>
+</div>
