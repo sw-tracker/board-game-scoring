@@ -1,35 +1,31 @@
-<h1 class="text-3xl font-bold">
+<h1 class="text-3xl font-bold text-center">
   Ohanami Scoring App
 </h1>
 
-<table class="border-separate border border-slate-400">
-  <thead>
-  <tr>
-    <th colspan="2">Rounds</th>
-    <th>Player 1</th>
-    <th>Player 2</th>
-    <th>Player 3</th>
-    <th>Player 4</th>
-  </tr>
-  </thead>
-  <tbody>
-  <ng-container *ngFor="let dummy of ' '.repeat(3).split(''), let outer = index">
+<div class="grid grid-cols-5 gap-1 p-1 pt-8">
+  <h5></h5>
+  <h5 class="text-center">Player 1</h5>
+  <h5 class="text-center">Player 2</h5>
+  <h5 class="text-center">Player 3</h5>
+  <h5 class="text-center">Player 4</h5>
+  <ng-container
+    *ngFor="let dummy of ' '.repeat(3).split(''), let outer = index">
+    <hr class="col-span-5"/>
+    <h5 class="col-span-5 font-serif font-bold text-sm pr-2">{{outer + 1}} Round</h5>
+    <hr class="col-span-5"/>
     <ng-container *ngFor="let round of roundsConfig, let inner = index">
-      <tr *ngIf="round.usedInRounds.includes(outer)">
-        <td *ngIf="inner === 0" [attr.rowspan]="outer + 1" class="font-serif font-bold text-2xl">{{outer + 1}}.</td>
-        <td *ngIf="round.nonLinearMultiplier !== undefined" [attr.rowspan]="outer + 1" class="font-serif font-bold text-2xl"></td>
-        <td>
+      <ng-container *ngIf="round.usedInRounds.includes(outer)">
+        <div>
           <app-row-header [roundNumber]="1"
                           [multiplier]="round.linearMultiplier"
                           [iconType]="round.iconType"></app-row-header>
-        </td>
-        <td class="border border-slate-300"></td>
-        <td class="border border-slate-300"></td>
-        <td class="border border-slate-300"></td>
-        <td class="border border-slate-300"></td>
-      </tr>
+        </div>
+        <h5 class="border border-slate-300"></h5>
+        <h5 class="border border-slate-300"></h5>
+        <h5 class="border border-slate-300"></h5>
+        <h5 class="border border-slate-300"></h5>
+      </ng-container>
     </ng-container>
   </ng-container>
-  </tbody>
-</table>
+</div>
 
