@@ -8,7 +8,7 @@ export enum IconTypes {
 export interface RoundTypes {
   iconType: IconTypes;
   linearMultiplier?: number;
-  nonLinearMultiplier?: Record<number, number>;
+  nonLinearMultiplier?: number[];
   usedInRounds: number[];
 }
 
@@ -44,24 +44,27 @@ export const roundsConfig: RoundTypes[] = [
   },
   {
     iconType: IconTypes.FLOWER,
-    nonLinearMultiplier: {
-      0: 0,
-      1: 1,
-      2: 3,
-      3: 6,
-      4: 10,
-      5: 15,
-      6: 21,
-      7: 28,
-      8: 36,
-      9: 45,
-      10: 55,
-      11: 66,
-      12: 78,
-      13: 91,
-      14: 105,
-      15: 120,
-    },
+    nonLinearMultiplier: [
+      0,
+      1,
+      3,
+      6,
+      10,
+      15,
+      21,
+      28,
+      36,
+      45,
+      55,
+      66,
+      78,
+      91,
+      105,
+      120,
+    ],
     usedInRounds: [2],
   }
 ];
+
+export const roundsConfigMap: Record<IconTypes | string, RoundTypes> =
+  roundsConfig.reduce((a, v) => ({ ...a, [v.iconType]: v}), {})

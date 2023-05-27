@@ -5,6 +5,7 @@ import {
   IconTypes,
   PlayerScoreRound,
   RoundTypes,
+  roundsConfigMap,
 } from './round-types';
 import { isNotNullOrUndefined, isNullOrUndefined } from '../utils/utils';
 
@@ -19,6 +20,7 @@ export class ScoringCalculationService {
   private playerScores: PlayerScore[] = [];
 
   constructor() {
+    console.log(roundsConfigMap)
     for (let p = 0; p < MAX_PLAYERS; p++) {
       this.playerScores[p] = {
         rounds: this.createEmptyRounds(),
@@ -63,12 +65,12 @@ export class ScoringCalculationService {
   private calculateScores() {
     for (let playerIndex = 0; playerIndex < this.playerScores.length; playerIndex++) {
       let total: number | undefined;
-      this.playerScores[playerIndex].rounds.forEach(r => {
+      this.playerScores[playerIndex].rounds.forEach(round => {
         icontTypesArray.forEach(icon => {
-          const currentScoreValue = r.totalCards[icon];
+          const currentScoreValue = round.totalCards[icon];
           if (isNotNullOrUndefined(currentScoreValue)) {
             total = isNullOrUndefined(total) ? 0 : total;
-            total += currentScoreValue;
+            total += this.getMultipliedScore(currentScoreValue, Object(IconTypes)[icon], round);
           }
         });
       });
@@ -77,15 +79,18 @@ export class ScoringCalculationService {
   }
 
   private getConfigByIconType(iconType: IconTypes) {
-    for (let roundsConfigKey in roundsConfig) {
-      if (roundsConfig[roundsConfigKey].iconType === iconType) {
-        return roundsConfig[roundsConfigKey];
-      }
-    }
-    return undefined;
+    return roundsConfigMap[iconType];
   }
 
-  private getMultiplierByIconType(iconType: IconTypes, round: number) {
-    this.getConfigByIconType(iconType)
+  private getMultipliedScore(totalCards: number, iconType: IconTypes, round: PlayerScoreRound) {
+    const config = this.getConfigByIconType(iconType);
+    const multiplier = config.linearMultiplier;
+
+    if (isNotNullOrUndefined(multiplier)) {
+      return totalCards * multiplier;
+    }
+
+    const nonLinearMultiplier = config.nonLinearMultiplier ?? [];
+    return nonLinearMultiplier[totalCards] ?? nonLinearMultiplier[nonLinearMultiplier?.length - 1] ?? 0;
   }
 }
