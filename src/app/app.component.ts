@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { roundsConfig, PlayerScore, RoundTypes } from './services/round-types';
+import {
+  roundsConfig,
+  PlayerScore,
+  RoundTypes,
+} from './services/round-types';
 import { ScoringCalculationService } from './services/scoring-calculation.service';
 
 @Component({
@@ -23,7 +27,7 @@ export class AppComponent {
     this.scoringCalculationService.updatePlayerScore(playerIndex, roundIndex, round, $event);
     this.playerScores = this.scoringCalculationService.getPlayerScores();
   }
-  
+
   getPlayerTotalScore(playerIndex: number) {
     return this.playerScores[playerIndex].total;
   }

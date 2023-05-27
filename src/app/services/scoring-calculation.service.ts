@@ -93,4 +93,8 @@ export class ScoringCalculationService {
     const nonLinearMultiplier = config.nonLinearMultiplier ?? [];
     return nonLinearMultiplier[totalCards] ?? nonLinearMultiplier[nonLinearMultiplier?.length - 1] ?? 0;
   }
+
+  public getFlowerPoints() {
+    return roundsConfigMap[IconTypes.FLOWER].nonLinearMultiplier;
+  }
 }

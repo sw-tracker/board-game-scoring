@@ -8,6 +8,7 @@ import { RowHeaderComponent } from './row-header/row-header.component';
 import { BorderedIconComponent } from './row-header/bordered-icon/bordered-icon.component';
 import { ScoreInputComponent } from './score-input/score-input.component';
 import { PlayerNameInputComponent } from './player-name-input/player-name-input.component';
+import { FlowerPointsComponent } from './flower-points/flower-points.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PlayerNameInputComponent } from './player-name-input/player-name-input.
     RowHeaderComponent,
     BorderedIconComponent,
     ScoreInputComponent,
-    PlayerNameInputComponent
+    PlayerNameInputComponent,
+    FlowerPointsComponent
   ],
   imports: [
     BrowserModule,

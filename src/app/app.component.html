@@ -6,7 +6,8 @@
   <p></p>
   <ng-container
     *ngFor="let dummy of ' '.repeat(4).split(''), let i = index">
-    <app-player-name-input [playerIndex]="i" (nameChange)="onPlayerNameChange($event, i)"></app-player-name-input>
+    <app-player-name-input [playerIndex]="i"
+                           (nameChange)="onPlayerNameChange($event, i)"></app-player-name-input>
   </ng-container>
 
   <ng-container
@@ -24,7 +25,8 @@
         </div>
         <ng-container
           *ngFor="let dummy of ' '.repeat(4).split(''), let playerIndex = index">
-          <app-score-input (scoreChange)="onScoreChange($event, playerIndex, roundIndex, round)"></app-score-input>
+          <app-score-input
+            (scoreChange)="onScoreChange($event, playerIndex, roundIndex, round)"></app-score-input>
         </ng-container>
       </ng-container>
     </ng-container>
@@ -34,6 +36,9 @@
   <p class="font-serif font-bold text-2xl pr-2 text-right">&Sigma;</p>
   <ng-container
     *ngFor="let dummy of ' '.repeat(4).split(''), let i = index">
-    <app-score-input [isReadonly]="true" [scoreValue]="getPlayerTotalScore(i)"></app-score-input>
+    <app-score-input [isReadonly]="true"
+                     [scoreValue]="getPlayerTotalScore(i)"></app-score-input>
   </ng-container>
 </div>
+
+<app-flower-points></app-flower-points>
