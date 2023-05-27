@@ -6,34 +6,34 @@
   <p></p>
   <ng-container
     *ngFor="let dummy of ' '.repeat(4).split(''), let i = index">
-    <app-player-name-input [playerIndex]="i"></app-player-name-input>
+    <app-player-name-input [playerIndex]="i" (nameChange)="onPlayerNameChange($event, i)"></app-player-name-input>
   </ng-container>
 
   <ng-container
-    *ngFor="let dummy of ' '.repeat(3).split(''), let outer = index">
+    *ngFor="let dummy of ' '.repeat(3).split(''), let roundIndex = index">
     <hr class="col-span-5"/>
-    <p class="col-span-5 font-serif font-bold text-sm pr-2">{{outer + 1}}
+    <p class="col-span-5 font-serif font-bold text-sm pr-2">{{roundIndex + 1}}
       Round</p>
     <hr class="col-span-5"/>
-    <ng-container *ngFor="let round of roundsConfig, let inner = index">
-      <ng-container *ngIf="round.usedInRounds.includes(outer)">
+    <ng-container *ngFor="let round of roundsConfig, let iconTypeIndex = index">
+      <ng-container *ngIf="round.usedInRounds.includes(roundIndex)">
         <div>
           <app-row-header [roundNumber]="1"
                           [multiplier]="round.linearMultiplier"
                           [iconType]="round.iconType"></app-row-header>
         </div>
-        <app-score-input></app-score-input>
-        <app-score-input></app-score-input>
-        <app-score-input></app-score-input>
-        <app-score-input></app-score-input>
+        <ng-container
+          *ngFor="let dummy of ' '.repeat(4).split(''), let playerIndex = index">
+          <app-score-input (scoreChange)="onScoreChange($event, playerIndex, roundIndex, round)"></app-score-input>
+        </ng-container>
       </ng-container>
     </ng-container>
   </ng-container>
 
   <hr class="col-span-5"/>
   <p class="font-serif font-bold text-2xl pr-2 text-right">&Sigma;</p>
-  <app-score-input [isReadonly]="true"></app-score-input>
-  <app-score-input [isReadonly]="true"></app-score-input>
-  <app-score-input [isReadonly]="true"></app-score-input>
-  <app-score-input [isReadonly]="true"></app-score-input>
+  <ng-container
+    *ngFor="let dummy of ' '.repeat(4).split(''), let i = index">
+    <app-score-input [isReadonly]="true" [scoreValue]="getPlayerTotalScore(i)"></app-score-input>
+  </ng-container>
 </div>

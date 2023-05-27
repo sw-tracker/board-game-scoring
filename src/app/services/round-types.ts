@@ -1,8 +1,8 @@
 export enum IconTypes {
-  DROPLET,
-  LEAF,
-  CLOUD,
-  FLOWER
+  DROPLET = "DROPLET",
+  LEAF = "LEAF",
+  CLOUD = "CLOUD",
+  FLOWER = "FLOWER"
 }
 
 export interface RoundTypes {
@@ -10,6 +10,20 @@ export interface RoundTypes {
   linearMultiplier?: number;
   nonLinearMultiplier?: Record<number, number>;
   usedInRounds: number[];
+}
+
+export type EnumDictionary<T extends string | symbol | number, U> = {
+  [K in T]: U;
+};
+
+export interface PlayerScoreRound {
+  totalCards: EnumDictionary<IconTypes | string, number | undefined>;
+}
+
+export interface PlayerScore {
+  playerName?: string;
+  rounds: PlayerScoreRound[];
+  total?: number;
 }
 
 export const roundsConfig: RoundTypes[] = [

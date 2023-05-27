@@ -2,5 +2,7 @@
   type="text"
   class="name-input text-center"
   [attr.placeholder]="'Player ' + (playerIndex !== undefined ? playerIndex + 1 : '?')"
+  (input)="onChange()"
+  [(ngModel)]="nameText"
 />
 </p>

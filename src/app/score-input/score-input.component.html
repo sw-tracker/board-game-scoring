@@ -4,7 +4,10 @@
   max="99"
   step="1"
   class="score-input text-center"
+  [value]="scoreValue"
   [class.input-disabled] = "isReadonly"
   [readOnly]="isReadonly"
+  (input)="onChange()"
+  [(ngModel)]="scoreInput"
 />
 </p>

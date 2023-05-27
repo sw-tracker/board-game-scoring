@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-player-name-input',
@@ -7,4 +7,10 @@ import { Component, Input } from '@angular/core';
 })
 export class PlayerNameInputComponent {
   @Input() playerIndex?: number;
+  @Output() readonly nameChange = new EventEmitter<string>();
+  nameText: string = '';
+
+  onChange() {
+    this.nameChange.emit(this.nameText);
+  }
 }
