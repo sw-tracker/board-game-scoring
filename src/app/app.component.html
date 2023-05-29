@@ -3,12 +3,7 @@
 </h1>
 
 <div class="container grid grid-cols-5 gap-1 p-1 pt-8">
-  <p></p>
-  <ng-container
-    *ngFor="let dummy of ' '.repeat(4).split(''), let i = index">
-    <app-player-name-input [playerIndex]="i"
-                           (nameChange)="onPlayerNameChange($event, i)"></app-player-name-input>
-  </ng-container>
+  <app-player-names-row class="col-span-5"></app-player-names-row>
 
   <ng-container
     *ngFor="let dummy of ' '.repeat(3).split(''), let roundIndex = index">
@@ -18,11 +13,9 @@
     <hr class="col-span-5"/>
     <ng-container *ngFor="let round of roundsConfig">
       <ng-container *ngIf="round.usedInRounds.includes(roundIndex)">
-        <div>
-          <app-row-header [roundNumber]="1"
-                          [multiplier]="round.linearMultiplier"
-                          [iconType]="round.iconType"></app-row-header>
-        </div>
+        <app-row-header [roundNumber]="1"
+                        [multiplier]="round.linearMultiplier"
+                        [iconType]="round.iconType"></app-row-header>
         <ng-container
           *ngFor="let dummy of ' '.repeat(4).split(''), let playerIndex = index">
           <app-score-input

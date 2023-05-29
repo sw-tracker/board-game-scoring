@@ -1,0 +1,8 @@
+<div class="grid grid-cols-5 gap-1">
+  <p></p>
+  <ng-container
+    *ngFor="let dummy of ' '.repeat(4).split(''), let i = index">
+    <app-player-name-input [playerIndex]="i"
+                           (nameChange)="onPlayerNameChange($event, i)"></app-player-name-input>
+  </ng-container>
+</div>

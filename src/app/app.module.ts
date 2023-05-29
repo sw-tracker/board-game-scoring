@@ -10,6 +10,7 @@ import { ScoreInputComponent } from './score-input/score-input.component';
 import { PlayerNameInputComponent } from './player-name-input/player-name-input.component';
 import { FlowerPointsComponent } from './flower-points/flower-points.component';
 import { ScoresRowComponent } from './scores-row/scores-row.component';
+import { PlayerNamesRowComponent } from './player-names-row/player-names-row.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ScoresRowComponent } from './scores-row/scores-row.component';
     ScoreInputComponent,
     PlayerNameInputComponent,
     FlowerPointsComponent,
-    ScoresRowComponent
+    ScoresRowComponent,
+    PlayerNamesRowComponent
   ],
   imports: [
     BrowserModule,

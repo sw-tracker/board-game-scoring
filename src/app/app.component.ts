@@ -18,11 +18,6 @@ export class AppComponent {
     this.playerScores = this.scoringCalculationService.getPlayerScores();
   }
 
-  onPlayerNameChange($event: string, playerIndex: number) {
-    this.scoringCalculationService.setPlayerName(playerIndex, $event);
-    this.playerScores = this.scoringCalculationService.getPlayerScores();
-  }
-
   onScoreChange($event: number | undefined, playerIndex: number, roundIndex: number, round: RoundTypes) {
     this.scoringCalculationService.updatePlayerScore(playerIndex, roundIndex, round, $event);
     this.playerScores = this.scoringCalculationService.getPlayerScores();
