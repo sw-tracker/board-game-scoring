@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import {PlayerScore} from "src/app/services/round-types";
+import {PlayerScore} from "src/app/ohanami/services/round-types";
 import {
   ScoringCalculationService
-} from "src/app/services/scoring-calculation.service";
+} from "src/app/ohanami/services/scoring-calculation.service";
 
 @Component({
   selector: 'app-scores-row',
