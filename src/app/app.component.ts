@@ -27,12 +27,4 @@ export class AppComponent {
     this.scoringCalculationService.updatePlayerScore(playerIndex, roundIndex, round, $event);
     this.playerScores = this.scoringCalculationService.getPlayerScores();
   }
-
-  getPlayerTotalScore(playerIndex: number) {
-    return this.playerScores[playerIndex].total;
-  }
-
-  getPlayerIsWinner(playerIndex: number) {
-    return this.playerScores[playerIndex].winner;
-  }
 }

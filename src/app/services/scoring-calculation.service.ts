@@ -137,6 +137,5 @@ export class ScoringCalculationService {
     this.playerScores.forEach((player, playerIndex) => {
       player.winner = winnerIndexes.includes(playerIndex);
     });
-    console.log(winnerIndexes, this.playerScores[0]);
   }
 }

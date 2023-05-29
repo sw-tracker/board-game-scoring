@@ -1,0 +1,16 @@
+<div class="grid grid-cols-5 gap-1">
+  <p class="font-serif font-bold text-2xl pr-2 text-right">&Sigma;</p>
+  <ng-container
+    *ngFor="let dummy of ' '.repeat(4).split(''), let i = index">
+    <div [class.winner-highlight]="getPlayerIsWinner(i)">
+      <app-score-input [isReadonly]="true"
+                       [scoreValue]="getPlayerTotalScore(i)"></app-score-input>
+    </div>
+  </ng-container>
+  <div></div>
+  <ng-container
+    *ngFor="let dummy of ' '.repeat(4).split(''), let i = index">
+    <div
+      class="text-center winner-text">{{getPlayerIsWinner(i) ? "winner" : ""}}</div>
+  </ng-container>
+</div>
