@@ -21,7 +21,7 @@ const routes: Routes = [
     BrowserModule,
     FontAwesomeModule,
     FormsModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { useHash: true }),
     OhanamiModule
   ],
   providers: [],
