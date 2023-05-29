@@ -31,4 +31,8 @@ export class AppComponent {
   getPlayerTotalScore(playerIndex: number) {
     return this.playerScores[playerIndex].total;
   }
+
+  getPlayerIsWinner(playerIndex: number) {
+    return this.playerScores[playerIndex].winner;
+  }
 }

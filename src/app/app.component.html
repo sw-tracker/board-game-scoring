@@ -16,7 +16,7 @@
     <p class="col-span-5 font-serif font-bold text-sm pr-2">{{roundIndex + 1}}
       Round</p>
     <hr class="col-span-5"/>
-    <ng-container *ngFor="let round of roundsConfig, let iconTypeIndex = index">
+    <ng-container *ngFor="let round of roundsConfig">
       <ng-container *ngIf="round.usedInRounds.includes(roundIndex)">
         <div>
           <app-row-header [roundNumber]="1"
@@ -36,8 +36,16 @@
   <p class="font-serif font-bold text-2xl pr-2 text-right">&Sigma;</p>
   <ng-container
     *ngFor="let dummy of ' '.repeat(4).split(''), let i = index">
-    <app-score-input [isReadonly]="true"
-                     [scoreValue]="getPlayerTotalScore(i)"></app-score-input>
+    <div [class.winner-highlight]="getPlayerIsWinner(i)">
+      <app-score-input [isReadonly]="true"
+                       [scoreValue]="getPlayerTotalScore(i)"></app-score-input>
+    </div>
+  </ng-container>
+  <div></div>
+  <ng-container
+    *ngFor="let dummy of ' '.repeat(4).split(''), let i = index">
+    <div
+      class="text-center winner-text">{{getPlayerIsWinner(i) ? "winner" : ""}}</div>
   </ng-container>
 </div>
 

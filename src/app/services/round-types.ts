@@ -24,6 +24,7 @@ export interface PlayerScore {
   playerName?: string;
   rounds: PlayerScoreRound[];
   total?: number;
+  winner: boolean;
 }
 
 export const roundsConfig: RoundTypes[] = [
