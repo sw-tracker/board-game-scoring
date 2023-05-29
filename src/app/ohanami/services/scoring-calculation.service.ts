@@ -7,7 +7,7 @@ import {
   RoundTypes,
   roundsConfigMap,
 } from './round-types';
-import { isNotNullOrUndefined, isNullOrUndefined } from '../utils/utils';
+import { isNotNullOrUndefined, isNullOrUndefined } from '../../utils/utils';
 
 const MAX_PLAYERS = 4;
 const MAX_ROUNDS = 3;

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import {
   ScoringCalculationService
-} from "src/app/services/scoring-calculation.service";
-import {IconTypes} from "src/app/services/round-types";
+} from "src/app/ohanami/services/scoring-calculation.service";
+import {IconTypes} from "src/app/ohanami/services/round-types";
 
 @Component({
   selector: 'app-flower-points',
